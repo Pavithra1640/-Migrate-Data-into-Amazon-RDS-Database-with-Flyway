@@ -34,27 +34,27 @@
 		     - Enter - Accesskey,Secreatkey
 
 - Step13: Download the flyway tarfil 
-       - wget -qO- https://download.red-gate.com/maven/release/com/ay-commandline/10.10.0/flyway-commandline-10.10.0-linux-x64.tar.gz | tar -xvz &&lyway-10.10.0/flyway /usr/local/bin
-	   - flyway-10.10.0 -- (directory is created)
-       - Folder Structure- README.txt  assets  conf  drivers  flyway  flyway.cmd  jre  lib  licenses  rules 
-       - Create sql directory --> mkdir sql --cd sql-- (Download S3 bucket files in to this directory or sql data)
+  - wget -qO- https://download.red-gate.com/maven/release/com/ay-commandline/10.10.0/flyway-commandline-10.10.0-linux-x64.tar.gz | tar -xvz &&lyway-10.10.0/flyway /usr/local/bin
+    
+- flyway-10.10.0 -- (directory is created)
+- Folder Structure- README.txt  assets  conf  drivers  flyway  flyway.cmd  jre  lib  licenses  rules
+- Create sql directory --> mkdir sql --cd sql-- (Download S3 bucket files in to this directory or sql data)
 	   
 - Step14:  Create S3 Bucket --- upload files in to that bucket -- click on file -- copy the URL 
 	    - in terminal execute command  aws s3 ls --- it will show the s3 bucket information list	   
 	    - aws s3 cp <s3Url> /localpath/directory
 	    - aws s3 cp s3://myawsmigration/V1__rentzone-db.sql /root/flyway 
 		
-- step15: finally migrate the data execute this command
+- step15: finally migrate the data execute this below command
 
 - flyway -url=jdbc:mysql://rdsflyway.cxmc4yyec335.us-east-1.rds.amazonaws.com:3306/RDSflyway \
-  -user=admin \
+  -user=admin \below
   -password=plBCS4Q5dpl3cD7ft9Zd \
   -locations=filesystem:sql \
   migrate
   
  - Step16: finally we done output
  - Flyway Community Edition 10.10.0 by Redgate
-
 - See release notes here: https://rd.gt/416ObMi
 - Database: jdbc:mysql://rdsflyway.cxmc4yyec335.us-east-1.rds.amazonaws.com:3306/RDSflyway (MySQL 8.0)
 - Schema history table `RDSflyway`.`flyway_schema_history` does not exist yet
